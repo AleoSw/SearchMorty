@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="eS">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SearchMorty</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <!-- JS only -->
+    <script defer src="main.js"></script>
+</head>
+<body>
+        <div id="app">
+            <main class="container my-3">
+                <form class="d-flex flex-column gap-2" id="form">
+                    <input 
+                    type="text"
+                    name="searchInput"
+                    class="form-control"
+                    placeholder="Search"
+                    id="searchInput"
+                    />
+                    <button type="submit" class="btn btn-outline-warning" id="btnSubmit">Submit</button>
+                </form>
+    
+                <div class="row mt-3" id="characters">
+                    
+                </div>
+    
+                <div class="pagination">
+                    <div class="buttons"></div>
+                </div>
+            </main>
+        </div>
+
+        <template id="teplateModal">
+            <div class="newModal vh-100">
+                <div class="card shadow position-relative">
+                    <div class="close text-light">
+                        <span class="text-secondary lead">Mensaje:</span>
+                        <i class="ri-close-fill btnClose"></i>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="text-light"></h5>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="templateCard">
+            <article class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <div class="card mb-3 shadow">
+                    <img src="" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="text-warning"></h5>
+                        <span class="lead text-secondary"></span>
+                    </div>
+                </div>
+            </article>
+        </template>
+</body>
+</html>
