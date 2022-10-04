@@ -56,14 +56,16 @@
 .align-center {align-items: center;}
 .flex-column {flex-direction: column;}
 
-html {scroll-behavior: smooth;}
+html {
+    scroll-behavior: smooth;
+    height: -webkit-fill-available;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
     color: var(--bg-white);
     background: var(--bg-dark);
-    height: 100vh;
-    overflow: hidden;
+    height: -webkit-fill-available;
 }
 
 a {text-decoration: none;}
@@ -103,15 +105,15 @@ strong {
 
 .appBody {
     width: 100%;
-    height: calc(100vh - var(--height-header));
-    overflow-y: auto;
+    /* height: calc(100vh - var(--height-header)); */
+    /* overflow-y: auto; */
 }
 
-.appBody::-webkit-scrollbar {
+body::-webkit-scrollbar {
     width: 16px;
 }
 
-.appBody::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
     height: 56px;
     border-radius: 8px;
     border: 4px solid transparent;
@@ -120,7 +122,7 @@ strong {
 }
 
 @media screen and (max-width: 768px) {
-    .appBody::-webkit-scrollbar {
+    body::-webkit-scrollbar {
         display: none;
     }
 }
@@ -148,11 +150,12 @@ strong {
 }
 
 .navbar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -100%;
     width: var(--width-nav);
-    height: 100vh;
+    /* height: 100vh; */
+    height: -webkit-fill-available;
     background-color: var(--bg-dark);
     border-radius: 0px 10px 10px 0px;
     padding: 1.75rem 1rem 1.25rem 1rem;
