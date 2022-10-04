@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:root {
+    /* HEIGHT NAV */
+    --height-header: 80px;
+    --width-nav: 270px;
+    --width-shadow-nav: calc(100vw - var(--width-nav));
+
+    /* COLORS */
+    --bg-dark: #232323;
+    --bg-white: #FFF;
+    --text-light: #535862;
+    --text-alt: #0066FF;
+    --bg-social: #D9D9D9;
+    --bg-input: #2F333C;
+    --bg-footer: #2F333C;
+    --border-bg: 1px #3f3f3f40 solid;
+    --bg-hr: #3f3f3f40;
+    --bg-navbar-shadow: rgba(0, 0, 0, 0.15);
+
+    /* CARD */
+    --card-width: 155px;
+    --card-height: 200px;
+    --cardImg-height: 113px;
+
+    /* STATUS */
+    --status-unknown: #D28F2A;
+    --status-alive: #2C8F36;
+    --status-dead: #D22A2A;
+
+    /* SHADOW */
+    --shadow: drop-shadow(0px 5px 10px #0000001a);
+
+    /* WEIGHTS */
+    --bold: 700;
+    --medium: 500;
+    --regular: 400;
+    --light: 300;
+}
+
+/* REUSABLE CSS */
+
+.d-flex {display: flex;}
+.d-none {display: none;}
+.d-block {display: block;}
+.d-grid {display: grid;}
+.justify-center {justify-content: center;}
+.justify-between {justify-content: space-between;}
+.align-center {align-items: center;}
+.flex-column {flex-direction: column;}
+
+html {scroll-behavior: smooth;}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--bg-white);
+    background: var(--bg-dark);
+    height: 100vh;
+    overflow: hidden;
+}
+
+a {text-decoration: none;}
+
+ul > li {list-style: none;}
+
+button, input {outline: none; border: none;}
+
+img, video {max-width: 100%; height: auto;}
+
+i {
+    font-size: 24px;
+}
+
+strong {
+    font-weight: var(--medium);
+    color: var(--text-alt);
+}
+
+/* CONTAINER */
+
+.container {
+    width: 100%;
+    height: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 375px) {
+    .container {
+        max-width: 375px;
+    }
+}
+
+/* HEADER */
+
+.appBody {
+    width: 100%;
+    height: calc(100vh - var(--height-header));
+    overflow-y: auto;
+}
+
+.appBody::-webkit-scrollbar {
+    width: 16px;
+}
+
+.appBody::-webkit-scrollbar-thumb {
+    height: 56px;
+    border-radius: 8px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+    background-color: var(--text-light);
+}
+
+@media screen and (max-width: 768px) {
+    .appBody::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.header {
+    position: relative;
+    width: 100%;
+    height: var(--height-header);
+    background-color: var(--bg-dark);
+    border-bottom: var(--border-bg);
+    z-index: 10;
+}
+
+.img-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 0.625rem;
+}
+
+.text-logo {
+    font-size: 20px;
+    font-weight: var(--medium);
+    line-height: 30px;
+    color: var(--bg-white);
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: var(--width-nav);
+    height: 100vh;
+    background-color: var(--bg-dark);
+    border-radius: 0px 10px 10px 0px;
+    padding: 1.75rem 1rem 1.25rem 1rem;
+    transition: 0.3s;
+}
+
+.navbar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: var(--width-nav);
+    width: calc(100vw - var(--width-nav));
+    height: 100vh;
+    transition: 1s;
+}
+
+.shownav {
+    left: 0;
+}
+
+.nav-list {
+    position: relative;
+    gap: 84px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.nav-link {
+    width: initial;
+    position: relative;
+    font-size: 18px;
+    font-weight: var(--medium);
+    line-height: 27px;
+    color: var(--bg-white);
+}
+
+.active-link {
+    width: fit-content;
+    position: relative;
+}
+
+.active-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-alt);
+}
+
+.end-textnav {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: var(--medium);
+    line-height: 18px;
+    text-align: center;
+}
+
+.btnToggle {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: var(--bg-dark);
+    color: var(--bg-white);
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* TITTLE AND INPUT */
+
+.secInput {
+    width: 100%;
+    padding-top: 3.125rem;
+    padding-bottom: 0.625rem;
+}
+
+.secInput .title {
+    font-size: 16px;
+    font-weight: var(--medium);
+    line-height: 24px;
+    text-align: justify;
+    margin-bottom: 25px;
+}
+
+.secInput .iconInput {
+    padding-inline: 0.625rem;
+    padding-top: 0.625rem;
+    padding-bottom: 0.688rem;
+    height: 45px;
+    background-color: var(--bg-input);
+    color: var(--text-alt);
+    border-radius: 10px 0 0 10px;
+}
+
+.secInput .searchInput {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    height: 45px;
+    padding-block: 0.75rem;
+    padding-right: 1rem;
+    background-color: var(--bg-input);
+    color: var(--bg-white);
+    font-size: 16px;
+    font-weight: var(--medium);
+    border-radius: 0 10px 10px 0;
+}
+
+
+.secInput .searchInput::placeholder {
+    color: var(--text-light);
+    font-weight: var(--medium);
+    font-size: 14px;
+}
+
+/* HR */
+.hr {
+    width: 100%;
+    height: 1px;
+    background: var(--bg-hr);
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* RESULTS */
+
+.results {
+    width: 100%;
+    padding-bottom: 1.25rem;
+}
+
+.results .container .row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, var(--card-width));
+    justify-content: space-between;
+}
+
+.card {
+    position: relative;
+    width: var(--card-width);
+    height: var(--card-height);
+    background: var(--bg-dark);
+    border-radius: 5px;
+    filter: var(--shadow);
+    cursor: pointer;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.card .imgContainer {
+    width: 100%;
+    height: var(--cardImg-height);
+}
+
+.card .imgContainer .imgCard {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cardBody {
+    padding: 0.625rem;
+    height: calc(100% - var(--cardImg-height));
+}
+
+.cardBody .titleCard {
+    font-size: 14px;
+    font-weight: var(--medium);
+    line-height: 21px;
+    color: var(--text-alt);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cardBody .statusCard .boxStatus {
+    width: 3px;
+    height: 3px;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
+/*COLORS STATUS*/
+
+.alive {
+    background-color: var(--status-alive);
+}
+
+.unknown {
+    background-color: var(--status-unknown);
+}
+
+.dead {
+    background-color: var(--status-dead);
+}
+
+.cardBody .statusCard .statusText {
+    font-weight: var(--medium);
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--text-light);
+}
+
+.cardBody .species {
+    font-weight: var(--medium);
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--text-light);
+}
+
+.overlayCard {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* FOOTER */ 
+
+.footer {
+    width: 100%;
+    background-color: var(--bg-footer);
+    padding-top: 1.25rem;
+    padding-bottom: 1.75rem;
+}
+.footer .titleFooter {
+    font-weight: var(--medium);
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--bg-white);
+    margin-bottom: 10px;
+}
+
+.footer .socialMedia {
+    gap: 6px;
+}
+
+.footer .socialMedia a {
+    width: 25px;
+    height: 25px;
+    background: var(--bg-white);
+    border-radius: 100%;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.footer .socialMedia a i {
+    color: var(--text-alt);
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.footer .socialMedia a:focus i {
+    color: var(--bg-white);
+}
+
+.footer .socialMedia a:hover  i{
+    color: var(--bg-white);
+}
+
+.footer .socialMedia .instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.footer .socialMedia .instagram:focus {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.footer .socialMedia .github:hover {
+    background-color: var(--text-light);
+}
+
+.footer .socialMedia .github:focus {
+    background-color: var(--text-light);
+}
+
+.footer .socialMedia .whatsapp:hover {
+    background-color: #00bb2d;
+}
+
+.footer .socialMedia .whatsapp:focus {
+    background-color: #00bb2d;
+}
+
+/* MEDIA QUERIES */ 
+
+@media screen and (min-width: 744px) {
+
+    :root {
+        --height-header: 90px;
+        --width-nav: 320px;
+        --width-shadow-nav: calc(100vw - var(--width-nav));
+    }
+
+    .img-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .text-logo {
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    .btnToggle {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .btnToggle i {
+        font-size: 32px;
+    }
+
+    .navbar {
+        padding-block: 1.875rem;
+    }
+
+    .nav-link {
+        font-size: 20px;
+        line-height: 30px;
+    }
+
+    .end-textnav {
+        max-width: 220px;
+        margin-right: auto;
+        margin-left: auto;
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .container {
+        max-width: 744px;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .appBody .container {
+        max-width: 569px;
+    }
+
+    .secInput {
+        padding-bottom: 1.563rem;
+    }
+
+    .secInput .title {
+        font-size: 20px;
+        font-weight: var(--medium);
+        line-height: 30px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .secInput .iconInput, .secInput .searchInput {
+        height: 55px;
+    }
+
+    .secInput .searchInput {
+        font-size: 18px;
+    }
+
+    .secInput .searchInput::placeholder {
+        font-size: 16px;
+    }
+
+    .hr {
+        margin-top: 10px;
+        margin-bottom: 25px;
+    }
+
+    .results .container .row {
+        grid-template-columns: repeat(3, var(--card-width));
+    }
+
+    .card {
+        margin-bottom: 20px;
+    }
+
+    .footer {
+        padding-block: 1.875rem;
+    }
+
+    .footer .titleFooter {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .footer .socialMedia a {
+        width: 30px;
+        height: 30px;
+    }
+
+    .footer .socialMedia a i {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 991px) {
+
+    .container {
+        max-width: 991px;
+    }
+
+    .appBody .container {
+        max-width: 750px;
+    }
+
+    .btnToggle {
+        display: none;
+    }
+
+    .navbar {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: initial;
+        height: initial;
+        background: transparent;
+    }
+
+    .navbar::before {
+        width: 0px;
+    }
+
+    .nav-list {
+        flex-direction: row;
+    }
+
+    .end-textnav {
+        display: none;
+    }
+
+    .results .container .row {
+        grid-template-columns: repeat(4, var(--card-width));
+    }
+
+}
+
+@media screen and (min-width: 1440px) {
+    .container {
+        max-width: 1440px;
+    }
+
+    .appBody .container {
+        max-width: 924px;
+    }
+
+    :root {
+        --height-header: 120px;
+    }
+
+    .img-logo {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .text-logo {
+        font-size: 26px;
+        line-height: 39px;
+    }
+
+    .nav-link {
+        font-size: 26px;
+        line-height: 39px;
+    }
+
+    .secInput .title {
+        font-size: 22px;
+        line-height: 33px;
+        margin-bottom: 60px;
+    }
+
+    i {
+        font-size: 28px;
+    }
+
+    .secInput .iconInput, .secInput .searchInput {
+        height: 65px;
+    }
+
+    .secInput .searchInput {
+        padding-block: 1.125rem;
+    }
+
+    .secInput .searchInput::placeholder {
+        font-size: 18px;
+        line-height: 27px;
+    }
+
+    :root {
+        --card-width: 200px;
+        --card-height: 250px;
+        --cardImg-height: 150px;
+    }
+
+    .cardBody {
+        padding-block: 0.75rem;
+    }
+
+    .cardBody .titleCard {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .cardBody .statusCard .statusText {
+        font-size: 14px;
+        line-height: 21px;
+    }
+    
+    .cardBody .species {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .footer {
+        padding-block: 4.063rem;
+    }
+
+    .footer .titleFooter {
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 20px;
+    }
+
+    .footer .socialMedia a{
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer .socialMedia a i {
+        font-size: 25px;
+    }
+
+}
