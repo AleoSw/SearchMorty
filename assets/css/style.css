@@ -105,8 +105,7 @@ strong {
 
 .appBody {
     width: 100%;
-    /* height: calc(100vh - var(--height-header)); */
-    /* overflow-y: auto; */
+    margin-top: var(--height-header);
 }
 
 body::-webkit-scrollbar {
@@ -128,7 +127,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 .header {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: var(--height-header);
     background-color: var(--bg-dark);
@@ -195,7 +196,9 @@ body::-webkit-scrollbar-thumb {
 .active-link {
     width: fit-content;
     position: relative;
+    transition: .3s;
 }
+
 
 .active-link::after {
     content: "";
@@ -205,8 +208,18 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     height: 2px;
     background-color: var(--text-alt);
+    animation: navlink .5s forwards;
+    transition: .3s;
 }
 
+@keyframes navlink {
+    0% {
+        background-color: transparent;
+    } 
+    100% {
+        background-color: var(--text-alt);
+    }
+}
 .end-textnav {
     font-size: 12px;
     color: var(--text-light);
@@ -382,6 +395,94 @@ body::-webkit-scrollbar-thumb {
     left: 0;
     width: 100%;
     height: 100%;
+}
+
+/* CARD FOOTER */
+
+.cardEpisode {
+    position: relative;
+    width: var(--card-width);
+    background: var(--bg-dark);
+    padding: 1rem;
+    border-radius: 5px;
+    filter: var(--shadow);
+    margin-bottom: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.cardEpisode .imgEpisodes img {
+    position: relative;
+    width: 30px;
+    border-radius: 100%;
+    border: 2px var(--text-alt) solid;
+    margin-bottom: 10px;
+}
+
+.headerCard {
+    margin-bottom: 10px;
+}
+
+.cardEpisode .titleEpisode {
+    font-size: 14px;
+    font-weight: var(--medium);
+    line-height: 21px;
+    color: var(--text-alt);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cardEpisode .episode {
+    font-size: 14px;
+    font-weight: var(--medium);
+    line-height: 21px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.cardEpisode .imgEpisodes img:nth-child(2), .cardEpisode .imgEpisodes img:nth-child(3) {
+    margin-left: -10px;
+}
+
+.dateEpisode {
+    margin-top: auto;
+    font-size: 14px;
+    font-weight: var(--medium);
+    line-height: 21px;
+    color: var(--text-light);
+}
+
+.subtitleLocation {
+    font-size: 14px;
+    font-weight: var(--medium);
+    line-height: 21px;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.titleLocation {
+    font-size: 14px;
+    font-weight: var(--medium);
+    line-height: 21px;
+    color: var(--text-alt);
+    margin-left: auto;
+    text-align: center;
+    margin-right: auto;
+}
+
+.imgLocation img {
+    position: relative;
+    width: 30px;
+    border-radius: 100%;
+    border: 2px var(--text-alt) solid;
+    margin-bottom: 10px;
+}
+
+.imgLocation img:nth-child(2), .imgLocation img:nth-child(3) {
+    margin-left: -10px;
 }
 
 /* FOOTER */ 
